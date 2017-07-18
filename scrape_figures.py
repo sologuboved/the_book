@@ -32,8 +32,8 @@ def scrape_old_canon(prefix, url):
     for row in table.find_all('tr')[1:]:
         cells = row.find_all('td')
 
-        en_book_name = cells[5].text
-        ru_book_name = cells[0].find_all('a')[0].text
+        en_book_name = cells[5].text.strip()
+        ru_book_name = cells[0].find_all('a')[0].text.strip()
         book_url = prefix + cells[0].find_all('a')[0].get('href')
 
         book_names[en_book_name] = ru_book_name
@@ -55,8 +55,7 @@ def scrape_book(en_book_name, url):
     for curr_chapter_num, curr_verse_num in verses:
         if curr_chapter_num != previous_chapter_num:
             verses_per_chapter.append(last_verse_num)
-            previous_chapter_num = curr_chapter_num
-            last_verse_num = curr_verse_num
+            previous_chapter_num, last_verse_num = curr_chapter_num, curr_verse_num
         else:
             last_verse_num = curr_verse_num
 
@@ -65,4 +64,16 @@ def scrape_book(en_book_name, url):
 
 
 if __name__ == '__main__':
-    pass
+    # names, figs = scrape_old_canon(PREFIX, URL_OLD)
+    # dump_json(names, BOOK_NAMES_OLD_CANON)
+    # dump_json(figs, FIGURES_OLD_CANON)
+    names = load_json(BOOK_NAMES_OLD_CANON)
+    for eng, rus in names.items():
+        print eng, '\t', rus
+        # print eng, '    ', rus
+    print
+    figs = load_json(FIGURES_OLD_CANON)
+    for b_name, verses_in_ch in figs.items():
+        print b_name
+        print verses_in_ch
+        print
