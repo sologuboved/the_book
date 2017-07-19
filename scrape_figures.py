@@ -2,23 +2,12 @@
 
 import requests
 from bs4 import BeautifulSoup
-import json
+from json_operations import *
 
 PREFIX = 'https://ru.wikisource.org'
 URL_OLD = 'https://ru.wikisource.org/wiki/Ветхий_завет'
 FIGURES_OLD_CANON = 'figures_old_canon.json'
 BOOK_NAMES_OLD_CANON = 'book_names_old_canon.json'
-
-
-def load_json(json_file):
-    with open(json_file) as data:
-        return json.load(data)
-
-
-def dump_json(data, json_file):
-    print "Dumping", json_file
-    with open(json_file, 'w') as handler:
-        json.dump(data, handler)
 
 
 def scrape_old_canon(prefix, url):
@@ -67,13 +56,4 @@ if __name__ == '__main__':
     # names, figs = scrape_old_canon(PREFIX, URL_OLD)
     # dump_json(names, BOOK_NAMES_OLD_CANON)
     # dump_json(figs, FIGURES_OLD_CANON)
-    names = load_json(BOOK_NAMES_OLD_CANON)
-    for eng, rus in names.items():
-        print eng, '\t', rus
-        # print eng, '    ', rus
-    print
-    figs = load_json(FIGURES_OLD_CANON)
-    for b_name, verses_in_ch in figs.items():
-        print b_name
-        print verses_in_ch
-        print
+    pass
