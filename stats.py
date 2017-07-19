@@ -5,6 +5,10 @@ import math
 
 BOOK_NAMES_OLD_CANON = 'book_names_old_canon.json'
 FIGURES_OLD_CANON = 'figures_old_canon.json'
+FIGURES_NEW = 'figures_new.json'
+BOOK_NAMES_NEW = 'book_names_new.json'
+FIGURES_CANON = 'figures_canon.json'
+BOOK_NAMES_CANON = 'book_names_canon.json'
 
 
 class Stats(object):
@@ -62,8 +66,19 @@ class Stats(object):
 
 
 if __name__ == '__main__':
-    stats = Stats(BOOK_NAMES_OLD_CANON, FIGURES_OLD_CANON)
-    # stats.find_means(True)
-    # stats.find_variances(True)
-    stats.find_standard_deviations(True)
+    # stats_old = Stats(BOOK_NAMES_OLD_CANON, FIGURES_OLD_CANON)
+    # stats_old.find_means(True)
+    # stats_old.find_variances(True)
+    # stats_old.find_standard_deviations(True)
 
+    # stats_new = Stats(BOOK_NAMES_NEW, FIGURES_NEW)
+    # stats_new.find_means(True)
+    # stats_new.find_variances(True)
+    # stats_new.find_standard_deviations(True)
+
+    # stats_both = Stats(BOOK_NAMES_CANON, FIGURES_CANON)
+    # stats_both.find_means(True)
+    # stats_both.find_variances(True)
+    # stats_both.find_standard_deviations(True)
+
+    pass
