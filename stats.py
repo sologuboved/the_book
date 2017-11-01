@@ -71,10 +71,10 @@ if __name__ == '__main__':
     # stats_old.find_variances(True)
     # stats_old.find_standard_deviations(True)
 
-    # stats_new = Stats(BOOK_NAMES_NEW, FIGURES_NEW)
-    # stats_new.find_means(True)
+    stats_new = Stats(BOOK_NAMES_NEW, FIGURES_NEW)
+    stats_new.find_means(True)
     # stats_new.find_variances(True)
-    # stats_new.find_standard_deviations(True)
+    stats_new.find_standard_deviations(True)
 
     # stats_both = Stats(BOOK_NAMES_CANON, FIGURES_CANON)
     # stats_both.find_means(True)
