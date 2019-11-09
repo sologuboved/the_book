@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from json_operations import *
 import math
 
@@ -26,11 +24,15 @@ class Stats(object):
             self.prettyprint(means, 'Means')
         return means
 
-    def find_total_mean(self):
+    def find_total_mean(self, show=False):
         all_chapters = list()
         for book in self._figs.values():
             all_chapters += book
-        return sum(all_chapters) / float(len(all_chapters))
+        total_mean = sum(all_chapters) / float(len(all_chapters))
+        if show:
+            print("Mean across all chapters is", total_mean)
+            print()
+        return total_mean
 
     def find_variances(self, show=False):
         variances = dict()
@@ -54,29 +56,32 @@ class Stats(object):
         return standard_deviations
 
     def prettyprint(self, dictionary, label):
-        print "Printing", label
-        print
+        print("Printing", label)
+        print()
         longest = len(max(self._names.values(), key=lambda t: len(t)))
         ordered_items = self.get_ordered_items(dictionary)
         for en_name, val in ordered_items:
             ru_name = self._names[en_name]
-            print ru_name + ' ' * (longest - len(ru_name)), '\t\t', val
-        print
-        print
+            print(ru_name + ' ' * (longest - len(ru_name)), '\t\t', val)
+        print()
+        print()
 
 
 if __name__ == '__main__':
-    # stats_old = Stats(BOOK_NAMES_OLD_CANON, FIGURES_OLD_CANON)
-    # stats_old.find_means(True)
-    # stats_old.find_variances(True)
-    # stats_old.find_standard_deviations(True)
+    stats_old = Stats(BOOK_NAMES_OLD_CANON, FIGURES_OLD_CANON)
+    stats_old.find_total_mean(True)
+    stats_old.find_means(True)
+    stats_old.find_variances(True)
+    stats_old.find_standard_deviations(True)
 
-    stats_new = Stats(BOOK_NAMES_NEW, FIGURES_NEW)
-    stats_new.find_means(True)
+    # stats_new = Stats(BOOK_NAMES_NEW, FIGURES_NEW)
+    # stats_new.find_total_mean(True)
+    # stats_new.find_means(True)
     # stats_new.find_variances(True)
-    stats_new.find_standard_deviations(True)
+    # stats_new.find_standard_deviations(True)
 
     # stats_both = Stats(BOOK_NAMES_CANON, FIGURES_CANON)
+    # stats_both.find_total_mean(True)
     # stats_both.find_means(True)
     # stats_both.find_variances(True)
     # stats_both.find_standard_deviations(True)

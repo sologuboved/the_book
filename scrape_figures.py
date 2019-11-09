@@ -92,7 +92,7 @@ def scrape_book(book_name, url):
     :param url: str
     :return: list of ints
     """
-    print 'Scraping', book_name
+    print('Scraping', book_name)
     verses_per_chapter = list()
 
     soup = BeautifulSoup(requests.get(url).content)
